@@ -10,7 +10,7 @@ from utils.utils import parse_bool
 class ArgParser():
     def __init__(self):
         self.parser = argparse.ArgumentParser()
-        self.proj_name = 'Generation'
+        self.proj_name = 'PiFi_Generation'
         self.user_name = os.getlogin()
 
         #Task arguments
@@ -45,7 +45,7 @@ class ArgParser():
                                  help = 'Path to the tensorboard log file.')
 
         # Model - Basic arguments
-        self.parser.add_argument('--proj_name', type = str, default = 'Generation',
+        self.parser.add_argument('--proj_name', type = str, default = 'PiFi_Generation',
                                  help = 'Name of the project.')
         model_type_list = ['t5', 'bart']
         self.parser.add_argument('--model_type', type = str, choices = model_type_list, default = 't5',

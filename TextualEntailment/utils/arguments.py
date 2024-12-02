@@ -5,21 +5,23 @@ from utils.utils import parse_bool
 class ArgParser():
     def __init__(self):
         self.parser = argparse.ArgumentParser()
-        self.proj_name = 'PiFi_QA'
+        self.proj_name = 'PiFi_TextualEntailment'
         self.user_name = os.getlogin()
 
 
         # Task arguments
-        task_list = ['question_answering']
-        self.parser.add_argument('--task', type=str, choices=task_list, default='question_answering',
+        task_list = ['entailment']
+        self.parser.add_argument('--task', type=str, choices=task_list, default='entailment',
                                  help='Task to do; Must be given.')
         job_list = ['preprocessing', 'training', 'resume_training', 'testing']
         self.parser.add_argument('--job', type=str, choices=job_list, default='training',
                                  help='Job to do; Must be given.')
-        dataset_list = ['squad']
+        dataset_list = ['imdb', 'sst2', 'cola', 'trec', 'subj', 'agnews', 'mr', 'cr', 'proscons', 'dbpedia', 'yelp_polarity', 'amazon_polarity', 'tweet_sentiment_binary', 'yelp_full', 'yahoo_answers_title', 'yahoo_answers_full', 'nsmc', 'snli', 'mnli', 'squad', 'filmstarts']
         self.parser.add_argument('--task_dataset', type=str, choices=dataset_list, default='sst2',
                                  help='Dataset for the task; Must be given.')
-        
+        test_dataset_list = ['imdb', 'sst2', 'cola', 'trec', 'subj', 'agnews', 'mr', 'cr', 'proscons', 'dbpedia', 'yelp_polarity', 'amazon_polarity', 'tweet_sentiment_binary', 'yelp_full', 'yahoo_answers_title', 'yahoo_answers_full', 'nsmc', 'snli', 'mnli', 'squad', 'filmstarts']
+        self.parser.add_argument('--test_dataset', type=str, choices=test_dataset_list, default='yelp_full',
+                                 help='Test Dataset for the task')
         self.parser.add_argument('--description', type=str, default='default',
                                  help='Description of the experiment; Default is "default"')
         method_list = ['base', 'base_llm']
@@ -43,12 +45,12 @@ class ArgParser():
                                  help = 'Path to the tensorboard log file.')
 
         # Model - Basic arguments
-        self.parser.add_argument('--proj_name', type=str, default='PiFi_QA',
+        self.parser.add_argument('--proj_name', type=str, default='PiFi_TextualEntailment',
                                  help='Name of the project.')
-        model_type_list = ['bert', 'bert_large', 'roberta', 'albert', 'electra', 'deberta', 'debertav3', 'bert-large', 'roberta-large', 'kcbert', 'mbert']
+        model_type_list = ['bert', 'roberta', 'albert', 'electra', 'deberta', 'debertav3', 'bert-large', 'roberta-large', 'lstm', 'gru', 'rnn', 'kcbert', 'mbert']
         self.parser.add_argument('--model_type', type=str, choices=model_type_list, default='bert',
                                  help='Type of the classification model to use.')
-        llm_model_list = ['llama2', 'llama3','llama3.1','llama3.1_instruct', 'mistral0.1', 'mistral0.3', 'qwen2_7b', 'qwen2_0.5b', 'qwen2_1.5b', 'qwen2_72b', 'gemma2', 'falcon', 'kollama', 'gerllama', 'chillama']
+        llm_model_list = ['llama2', 'llama3','llama3.1','llama3.1_instruct', 'mistral0.1', 'mistral0.3', 'qwen2_7b', 'qwen2_0.5b', 'qwen2_1.5b', 'gemma2', 'falcon', 'kollama', 'gerllama', 'chillama']
         self.parser.add_argument('--llm_model', type=str, choices=llm_model_list, default='llama3',
                                     help='LLM model to use; Default is llama3')
         self.parser.add_argument('--model_ispretrained', type=parse_bool, default=True,
@@ -63,8 +65,6 @@ class ArgParser():
                                  help='Dropout rate of the model; Default is 0.2')
         self.parser.add_argument('--padding', type=str, default='cls',
                                  help='Padding method of the input; Default is "cls"')
-        self.parser.add_argument('--freeze', type=parse_bool, default=True,
-                                 help='Freeze certain layers of the model during training; Default is True')
 
         # Model - Size arguments
         self.parser.add_argument('--embed_size', type=int, default=768, # Will be automatically specified by the model type if model is PLM
