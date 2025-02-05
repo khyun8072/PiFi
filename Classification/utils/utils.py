@@ -139,6 +139,10 @@ def get_huggingface_model_name(model_type: str) -> str:
         return 'google-bert/bert-base-uncased'
     elif name == 'bert_large':
         return 'google-bert/bert-large-uncased'
+    elif name == 'modern_bert':
+        return 'answerdotai/ModernBERT-base'
+    elif name == 'smollm':
+        return 'HuggingFaceTB/SmolLM2-135M'
     elif name == 'bart':
         return 'facebook/bart-large'
     elif name == 't5':

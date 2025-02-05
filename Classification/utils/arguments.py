@@ -48,11 +48,11 @@ class ArgParser():
         # Model - Basic arguments
         self.parser.add_argument('--proj_name', type=str, default='PiFi_Classification',
                                  help='Name of the project.')
-        model_type_list = ['bert', 'bert_large', 'roberta', 'albert', 'electra', 'deberta', 'debertav3', 'bert-large', 'roberta-large', 'kcbert', 'mbert']
+        model_type_list = ['bert', 'bert_large', 'modern_bert', 'smollm', 'roberta', 'albert', 'electra', 'deberta', 'debertav3', 'bert-large', 'roberta-large', 'kcbert', 'mbert']
         self.parser.add_argument('--model_type', type=str, choices=model_type_list, default='bert',
                                  help='Type of the classification model to use.')
         llm_model_list = ['llama2', 'llama3','llama3.1','llama3.1_instruct', 'mistral0.1', 'mistral0.3', 'qwen2_7b', 'qwen2_0.5b', 'qwen2_1.5b', 'qwen2_72b', 'gemma2', 'falcon', 'kollama', 'gerllama', 'chillama']
-        self.parser.add_argument('--llm_model', type=str, choices=llm_model_list, default='llama3',
+        self.parser.add_argument('--llm_model', type=str, choices=llm_model_list, default='llama3.1',
                                     help='LLM model to use; Default is llama3')
         self.parser.add_argument('--model_ispretrained', type=parse_bool, default=True,
                                  help='Whether to use pretrained model; Default is True')

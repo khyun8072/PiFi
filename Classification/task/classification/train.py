@@ -130,6 +130,8 @@ def training(args: argparse.Namespace) -> None:
             input_ids = data_dicts['input_ids'].to(device)
             attention_mask = data_dicts['attention_mask'].to(device)
             token_type_ids = data_dicts['token_type_ids'].to(device)
+            labels = data_dicts['labels'].to(device) 
+            
 
             classification_logits = model(input_ids, attention_mask, token_type_ids)
 

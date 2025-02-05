@@ -14,7 +14,7 @@ class ClassificationModel(nn.Module):
         self.args = args
 
         huggingface_model_name = get_huggingface_model_name(self.args.model_type)
-        self.config = AutoConfig.from_pretrained(huggingface_model_name)
+        self.config = AutoConfig.from_pretrained(huggingface_model_name, cache_dir=self.args.cache_path)
         if args.model_ispretrained:
             self.model = AutoModel.from_pretrained(huggingface_model_name, cache_dir=self.args.cache_path)
         else:
@@ -38,7 +38,12 @@ class ClassificationModel(nn.Module):
     
     def forward(self, input_ids: torch.Tensor, attention_mask: torch.Tensor, token_type_ids: torch.Tensor) -> torch.Tensor:
         device = input_ids.device
-        model_output = self.model(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids, return_dict=True)
+        if self.args.model_type == 'modern_bert' or self.args.model_type == 'smollm':
+            model_output = self.model(input_ids=input_ids, attention_mask=attention_mask, return_dict=True)
+            
+        else:
+            model_output = self.model(input_ids=input_ids, attention_mask=attention_mask, token_type_ids=token_type_ids, return_dict=True)
+            
         if self.args.padding == 'cls':
             cls_output = model_output.last_hidden_state[:, 0, :]
 
@@ -59,7 +64,7 @@ class ClassificationModel(nn.Module):
             seq_length = cls_output.size(1)
             attention_mask = torch.ones((batch_size, seq_length), dtype=cls_output.dtype).to(device)  
             position_ids = torch.arange(seq_length, dtype=torch.long).unsqueeze(0).expand(batch_size, -1).to(device)
-            
+            # position_embeddings 생성
             cls_output = self.llama_dim_mapper1(cls_output)
             if self.args.llm_model == 'falcon':
                 llm_outputs = self.llm_layer(
@@ -74,7 +79,7 @@ class ClassificationModel(nn.Module):
             else:
                 llm_outputs = self.llm_layer(
                                     hidden_states=cls_output,
-                                    attention_mask=attention_mask[:, None, None, :],  
+                                    attention_mask=attention_mask[:, None, None, :],
                                     position_ids=position_ids,
                                     past_key_value=None,
                                     output_attentions=None,

@@ -1,0 +1,32 @@
+ 2025-01-26 16:27:53 - Start training from epoch 0
+ 2025-01-26 16:27:53 - TRAIN - Epoch [0 / 3] - Iter[0 / 906] - Loss: 221.8268
+Training - Epoch [0/3]:   0%|                                                                          | 0/906 [00:00<?, ?it/s]The attention layers in this model are transitioning from computing the RoPE embeddings internally through `position_ids` (2D tensor with the indexes of the tokens), to using externally computed `position_embeddings` (Tuple of tensors, containing cos and sin). In v4.46 `position_ids` will be removed and `position_embeddings` will be mandatory.
+Passing a tuple of `past_key_values` is deprecated and will be removed in Transformers v4.48.0. You should pass an instance of `EncoderDecoderCache` instead, e.g. `past_key_values=EncoderDecoderCache.from_legacy_cache(past_key_values)`.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Training - Epoch [0/3]:   5%|███▎                                                             | 47/906 [00:41<12:34,  1.14it/s]
+Traceback (most recent call last):
+  File "main.py", line 49, in <module>
+    main(args)
+  File "main.py", line 40, in main
+    job(args)
+  File "/home/kyeonghyun/PiFi/Generation/task/translation/train.py", line 112, in training
+    nn.utils.clip_grad_norm_(model.parameters(), args.clip_grad_norm)
+  File "/home/kyeonghyun/anaconda3/envs/khyun/lib/python3.8/site-packages/torch/nn/utils/clip_grad.py", line 69, in clip_grad_norm_
+    clip_coef = max_norm / (total_norm + 1e-6)
+  File "/home/kyeonghyun/anaconda3/envs/khyun/lib/python3.8/site-packages/torch/_tensor.py", line 40, in wrapped
+    return f(*args, **kwargs)
+  File "/home/kyeonghyun/anaconda3/envs/khyun/lib/python3.8/site-packages/torch/_tensor.py", line 945, in __rdiv__
+    return self.reciprocal() * other
+KeyboardInterrupt

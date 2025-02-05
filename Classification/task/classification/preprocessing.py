@@ -11,7 +11,6 @@ from datasets import load_dataset
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from utils.utils import check_path, get_huggingface_model_name
 from sklearn.model_selection import train_test_split
-
 def load_data(args: argparse.Namespace) -> tuple: 
     """
     Load data from huggingface datasets.
@@ -90,6 +89,7 @@ def load_data(args: argparse.Namespace) -> tuple:
         valid_data['label'] = valid_df['label'].tolist()
         test_data['text'] = test_df['sentence'].tolist()
         test_data['label'] = test_df['label'].tolist()
+        
     elif name == 'imdb':
         dataset = load_dataset('imdb')
 
@@ -416,8 +416,11 @@ def preprocessing(args: argparse.Namespace) -> None:
     train_data, valid_data, test_data, num_classes = load_data(args)
 
     model_name = get_huggingface_model_name(args.model_type)
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    config = AutoConfig.from_pretrained(model_name)
+    print(f'Model name: {model_name}')
+    tokenizer = AutoTokenizer.from_pretrained(model_name, cache_dir=args.cache_path)
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token 
+    config = AutoConfig.from_pretrained(model_name, cache_dir=args.cache_path)
 
     data_dict = {
         'train': {

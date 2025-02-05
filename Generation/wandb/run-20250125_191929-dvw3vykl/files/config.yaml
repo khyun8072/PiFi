@@ -1,0 +1,176 @@
+wandb_version: 1
+
+task:
+  desc: null
+  value: translation
+job:
+  desc: null
+  value: training
+task_dataset:
+  desc: null
+  value: multi30k
+description:
+  desc: null
+  value: default
+method:
+  desc: null
+  value: base_llm
+data_path:
+  desc: null
+  value: /nas_homes/kyeonghyun/dataset/
+cache_path:
+  desc: null
+  value: /nas_homes/kyeonghyun/model
+preprocess_path:
+  desc: null
+  value: /nas_homes/kyeonghyun/preprocessed/PiFi_Generation
+model_path:
+  desc: null
+  value: /nas_homes/kyeonghyun/model_final/PiFi_Generation
+checkpoint_path:
+  desc: null
+  value: /nas_homes/kyeonghyun/model_checkpoint/PiFi_Generation
+result_path:
+  desc: null
+  value: /nas_homes/kyeonghyun/results/PiFi_Generation
+log_path:
+  desc: null
+  value: /nas_homes/kyeonghyun/tensorbord_log/PiFi_Generation
+proj_name:
+  desc: null
+  value: PiFi_Generation
+model_type:
+  desc: null
+  value: t5
+llm_model:
+  desc: null
+  value: llama3.1
+model_ispretrained:
+  desc: null
+  value: true
+dropout_rate:
+  desc: null
+  value: 0.2
+embedding_dims:
+  desc: null
+  value: 768
+hidden_size:
+  desc: null
+  value: 768
+num_layers:
+  desc: null
+  value: 3
+max_seq_len:
+  desc: null
+  value: 100
+num_transformer_heads:
+  desc: null
+  value: 8
+num_transformer_layers:
+  desc: null
+  value: 3
+layer_num:
+  desc: null
+  value: 3
+optimizer:
+  desc: null
+  value: Adam
+scheduler:
+  desc: null
+  value: None
+num_epochs:
+  desc: null
+  value: 3
+learning_rate:
+  desc: null
+  value: 5.0e-05
+num_workers:
+  desc: null
+  value: 2
+batch_size:
+  desc: null
+  value: 32
+weight_decay:
+  desc: null
+  value: 0
+clip_grad_norm:
+  desc: null
+  value: 5
+label_smoothing_eps:
+  desc: null
+  value: 0.05
+early_stopping_patience:
+  desc: null
+  value: 5
+train_valid_split:
+  desc: null
+  value: 0.2
+optimize_objective:
+  desc: null
+  value: loss
+test_batch_size:
+  desc: null
+  value: 1
+device:
+  desc: null
+  value: cuda
+seed:
+  desc: null
+  value: 42
+use_tensorboard:
+  desc: null
+  value: false
+use_wandb:
+  desc: null
+  value: true
+log_freq:
+  desc: null
+  value: 500
+src_vocab_size:
+  desc: null
+  value: 32128
+tgt_vocab_size:
+  desc: null
+  value: 32128
+_wandb:
+  desc: null
+  value:
+    python_version: 3.8.19
+    cli_version: 0.17.7
+    framework: huggingface
+    huggingface_version: 4.46.3
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1737800369
+    t:
+      1:
+      - 1
+      - 5
+      - 11
+      - 41
+      - 49
+      - 53
+      - 55
+      - 71
+      2:
+      - 1
+      - 5
+      - 11
+      - 41
+      - 49
+      - 53
+      - 55
+      - 71
+      3:
+      - 1
+      - 2
+      - 13
+      - 15
+      - 16
+      - 23
+      4: 3.8.19
+      5: 0.17.7
+      6: 4.46.3
+      8:
+      - 5
+      13: linux-x86_64
