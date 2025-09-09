@@ -83,9 +83,9 @@ python main.py --task classification --job=testing --task_dataset=sst2 --test_da
 
 #### Available Parameters:
 - `--task_dataset`: Dataset name (sst2, imdb, tweet_sentiment_binary, tweet_offensive, cola)
-- `--model_type`: Base model type (bert)
+- `--model_type`: Base model type (bert, roberta, albert, electra, deberta, debertav3)
 - `--method`: Training method (base, pifi)
-- `--llm`: LLM to use for plugin (llama3.1)
+- `--llm`: LLM to use for plugin (llama3.1, mistral0.1, mistral0.3, qwen2_7b, gemma2, falcon)
 - `--job`: Operation to perform (preprocessing, training, testing)
 
 ### Textual Entailment Tasks
@@ -120,9 +120,9 @@ python main.py --task entailment --job=testing --task_dataset=mnli --test_datase
 
 #### Available Parameters:
 - `--task_dataset`: Dataset name (mnli, snli)
-- `--model_type`: Base model type (bert)
+- `--model_type`: Base model type (bert, roberta, albert, electra, deberta, debertav3)
 - `--method`: Training method (base, pifi)
-- `--llm`: LLM to use for plugin (llama3.1)
+- `--llm`: LLM to use for plugin (llama3.1, mistral0.1, mistral0.3, qwen2_7b, gemma2, falcon)
 - `--job`: Operation to perform (preprocessing, training, testing)
 
 ## Experimental Setup
