@@ -6,7 +6,7 @@
 
 PiFi is a novel methodology that bridges the gap between Small Language Models (SLMs) and Large Language Models (LLMs) by leveraging the frozen last layer of LLMs as a plug-in component for SLMs during fine-tuning. This approach enables SLMs to benefit from the rich representation capabilities of LLMs while maintaining computational efficiency.
 
-**Paper**: [Plug-in and Fine-tuning: Bridging the Gap between Small Language Models and Large Language Models](https://aclanthology.org/2025.acl-long.271/)
+**Paper**: [Plug-in and Fine-tuning: Bridging the Gap between Small Language Models and Large Language Models](https://aclanthology.org/2025.acl-long.271/) (ACL 2025)
 
 ## Methodology
 
