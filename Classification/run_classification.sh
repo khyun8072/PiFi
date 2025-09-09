@@ -10,8 +10,8 @@ for TASK in ${TASK_LIST[@]}; do
                     python main.py --task $TASK --job=preprocessing --task_dataset=$CLASSIFICATION_TASK --model_type=$MODEL --seed=$SEED
                     python main.py --task $TASK --job=training --task_dataset=$CLASSIFICATION_TASK --test_dataset=$CLASSIFICATION_TASK --model_type=$MODEL --method=base
                     python main.py --task $TASK --job=testing --task_dataset=$CLASSIFICATION_TASK --test_dataset=$CLASSIFICATION_TASK --model_type=$MODEL --method=base
-                    python main.py --task $TASK --job=training --task_dataset=$CLASSIFICATION_TASK --test_dataset=$CLASSIFICATION_TASK --model_type=$MODEL --method=base_llm --llm=$LLM
-                    python main.py --task $TASK --job=testing --task_dataset=$CLASSIFICATION_TASK --test_dataset=$CLASSIFICATION_TASK --model_type=$MODEL --method=base_llm --llm=$LLM
+                    python main.py --task $TASK --job=training --task_dataset=$CLASSIFICATION_TASK --test_dataset=$CLASSIFICATION_TASK --model_type=$MODEL --method=pifi --llm=$LLM
+                    python main.py --task $TASK --job=testing --task_dataset=$CLASSIFICATION_TASK --test_dataset=$CLASSIFICATION_TASK --model_type=$MODEL --method=pifi --llm=$LLM
             done
         done
     fi

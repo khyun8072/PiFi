@@ -25,9 +25,9 @@ class ArgParser():
                                  help='Test Dataset for the task')
         self.parser.add_argument('--description', type=str, default='default',
                                  help='Description of the experiment; Default is "default"')
-        method_list = ['base', 'base_llm']
-        self.parser.add_argument('--method', type=str, choices=method_list, default='base_llm',
-                                 help='Method to use; Default is "base_llm"')
+        method_list = ['base', 'pifi']
+        self.parser.add_argument('--method', type=str, choices=method_list, default='pifi',
+                                 help='Method to use; Default is "pifi"')
 
 
         # Path arguments - Modify these paths to fit your environment

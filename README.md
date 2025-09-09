@@ -75,16 +75,16 @@ python main.py --task classification --job=training --task_dataset=sst2 --test_d
 python main.py --task classification --job=testing --task_dataset=sst2 --test_dataset=sst2 --model_type=bert --method=base
 
 # Training with LLM plugin (PiFi)
-python main.py --task classification --job=training --task_dataset=sst2 --test_dataset=sst2 --model_type=bert --method=base_llm --llm=llama3.1
+python main.py --task classification --job=training --task_dataset=sst2 --test_dataset=sst2 --model_type=bert --method=pifi --llm=llama3.1
 
 # Testing with LLM plugin (PiFi)
-python main.py --task classification --job=testing --task_dataset=sst2 --test_dataset=sst2 --model_type=bert --method=base_llm --llm=llama3.1
+python main.py --task classification --job=testing --task_dataset=sst2 --test_dataset=sst2 --model_type=bert --method=pifi --llm=llama3.1
 ```
 
 #### Available Parameters:
 - `--task_dataset`: Dataset name (sst2, imdb, tweet_sentiment_binary, tweet_offensive, cola)
 - `--model_type`: Base model type (bert)
-- `--method`: Training method (base, base_llm)
+- `--method`: Training method (base, pifi)
 - `--llm`: LLM to use for plugin (llama3.1)
 - `--job`: Operation to perform (preprocessing, training, testing)
 
@@ -112,16 +112,16 @@ python main.py --task entailment --job=training --task_dataset=mnli --test_datas
 python main.py --task entailment --job=testing --task_dataset=mnli --test_dataset=mnli --model_type=bert --method=base
 
 # Training with LLM plugin (PiFi)
-python main.py --task entailment --job=training --task_dataset=mnli --test_dataset=mnli --model_type=bert --method=base_llm --llm=llama3.1
+python main.py --task entailment --job=training --task_dataset=mnli --test_dataset=mnli --model_type=bert --method=pifi --llm=llama3.1
 
 # Testing with LLM plugin (PiFi)
-python main.py --task entailment --job=testing --task_dataset=mnli --test_dataset=mnli --model_type=bert --method=base_llm --llm=llama3.1
+python main.py --task entailment --job=testing --task_dataset=mnli --test_dataset=mnli --model_type=bert --method=pifi --llm=llama3.1
 ```
 
 #### Available Parameters:
 - `--task_dataset`: Dataset name (mnli, snli)
 - `--model_type`: Base model type (bert)
-- `--method`: Training method (base, base_llm)
+- `--method`: Training method (base, pifi)
 - `--llm`: LLM to use for plugin (llama3.1)
 - `--job`: Operation to perform (preprocessing, training, testing)
 
@@ -129,7 +129,7 @@ python main.py --task entailment --job=testing --task_dataset=mnli --test_datase
 
 The experiments compare two approaches:
 1. **Baseline (`base`)**: Standard SLM fine-tuning
-2. **PiFi (`base_llm`)**: SLM fine-tuning with frozen LLM layer plugin
+2. **PiFi (`pifi`)**: SLM fine-tuning with frozen LLM layer plugin
 
 Both approaches are evaluated on the same downstream tasks to demonstrate the effectiveness of the PiFi methodology.
 

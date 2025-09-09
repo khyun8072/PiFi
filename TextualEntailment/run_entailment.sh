@@ -11,8 +11,8 @@ for TASK in ${TASK_LIST[@]}; do
                 python main.py --task $TASK --job=preprocessing --task_dataset=$ENTAILMENT_TASK --model_type=$MODEL
                 python main.py --task $TASK --job=training --task_dataset=$ENTAILMENT_TASK --test_dataset=$ENTAILMENT_TASK --model_type=$MODEL --method=base
                 python main.py --task $TASK --job=testing --task_dataset=$ENTAILMENT_TASK --test_dataset=$ENTAILMENT_TASK --model_type=$MODEL --method=base
-                python main.py --task $TASK --job=training --task_dataset=$ENTAILMENT_TASK --test_dataset=$ENTAILMENT_TASK --model_type=$MODEL --method=base_llm --llm=$LLM
-                python main.py --task $TASK --job=testing --task_dataset=$ENTAILMENT_TASK --test_dataset=$ENTAILMENT_TASK --model_type=$MODEL --method=base_llm --llm=$LLM
+                python main.py --task $TASK --job=training --task_dataset=$ENTAILMENT_TASK --test_dataset=$ENTAILMENT_TASK --model_type=$MODEL --method=pifi --llm=$LLM
+                python main.py --task $TASK --job=testing --task_dataset=$ENTAILMENT_TASK --test_dataset=$ENTAILMENT_TASK --model_type=$MODEL --method=pifi --llm=$LLM
             done
         done
     fi

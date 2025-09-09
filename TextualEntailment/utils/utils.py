@@ -120,7 +120,7 @@ def get_wandb_exp_name(args: argparse.Namespace):
         exp_name += "%s / " % args.test_dataset
     exp_name += "%s" % args.model_type.upper()
     exp_name += " - %s" % args.method.upper()
-    if args.method == 'base_llm':
+    if args.method == 'pifi':
         exp_name += " - %s" % args.llm_model.upper()
         exp_name += "(%s)" % args.layer_num
 

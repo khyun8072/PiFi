@@ -122,7 +122,7 @@ def get_wandb_exp_name(args: argparse.Namespace):
     exp_name += " - %s" % args.method.upper()
     if 'ablation' in args.proj_name:
         exp_name += ' - %s' % args.padding.upper()
-    if args.method == 'base_llm':
+    if args.method == 'pifi':
         if args.freeze == False:
             exp_name += " - freeze(x)"
         exp_name += " - %s" % args.llm_model.upper()

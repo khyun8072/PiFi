@@ -26,7 +26,7 @@ class EntailmentModel(nn.Module):
         self.hidden_size = self.model.config.hidden_size
         self.num_classes = self.args.num_classes
 
-        if self.args.method == 'base_llm':
+        if self.args.method == 'pifi':
             llm_model_name = get_huggingface_model_name(self.args.llm_model)
             self.llm_layer, self.llm_embed_size, self.llm_hidden_size = llm_layer(llm_model_name, args)        
             self.llama_dim_mapper1 = nn.Linear(self.hidden_size, self.llm_embed_size, bias=False)
@@ -56,7 +56,7 @@ class EntailmentModel(nn.Module):
 
         if self.args.method == 'base':
             classification_logits = self.classifier(cls_output)
-        elif self.args.method == 'base_llm':
+        elif self.args.method == 'pifi':
             cls_output = cls_output.unsqueeze(1).to(device)
             batch_size = cls_output.size(0)
             seq_length = cls_output.size(1)
